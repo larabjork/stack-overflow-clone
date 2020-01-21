@@ -1,12 +1,14 @@
 class AnswersController < ApplicationController
 
   def new
-    @answer= Answer.new
+    @question = Question.find(params[:question_id])
+    @answer = Answer.new
     render :new
   end
 
   def create
-    @answer= Answer.new(answer_params)
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.new(answer_params)
     if @answer.save
       redirect_to answers_path
     else
@@ -15,24 +17,26 @@ class AnswersController < ApplicationController
   end
 
   def edit
-    @answer= Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
     render :edit
   end
 
-
   def update
-    @answer= Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
     if @answer.update(answer_params)
-      redirect_to answers_path
+      redirect_to question_path(@question.answer)
     else
       render :edit
     end
   end
 
   def destroy
-    @answer= Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
     @answer.destroy
-    redirect_to answers_path
+    redirect_to question_path(@question.answer)
   end
 
   private
