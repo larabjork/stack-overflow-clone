@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     resources :answers
   end
 
-  resources :answers do
-    resources :users
-  end
-
   resources :questions do
     resources :answers
+  end
+
+  resources :answers do
+    resources :users
   end
 end

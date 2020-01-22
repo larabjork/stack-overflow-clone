@@ -1,0 +1,26 @@
+<h1><%= @user.email %></h1>
+
+
+<% if @user.questions.any? %>
+  <h4>Here are the questions for this user:</h4>
+
+  <% @user.questions.each do |question| %>
+    <ul>
+      <li>
+        <%= link_to question.query, user_question_path(@user, question) %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>No questions are listed for this user.</p>
+<% end %>
+
+
+
+<p><%= link_to "Edit", edit_user_path(@user) %></p>
+<p><%= link_to "Delete", user_path(@user),
+  :data => {:confirm => "You sure?",
+  :method => "delete"} %></p>
+
+
+  <p><%= link_to "Return to users", users_path %></p>

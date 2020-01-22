@@ -1,0 +1,8 @@
+<%= render "layouts/errors", :object => @question %>
+
+<%= form_for @question do |f| %>
+  <%= f.label :query %>
+  <%= f.text_area :query %>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <%= f.submit %>
+<% end %>

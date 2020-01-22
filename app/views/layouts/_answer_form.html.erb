@@ -1,0 +1,8 @@
+<%= render "layouts/errors", :object => @answer %>
+
+<%= form_for @answer do |f| %>
+  <%= f.label :response %>
+  <%= f.text_area :response %>
+
+  <%= f.submit %>
+<% end %>

@@ -22,28 +22,28 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @album = Album.find(params[:id])
+    @user = User.find(params[:id])
      render :edit
  end
 
  def show
-   @album = Album.find(params[:id])
+   @user = User.find(params[:id])
     render :show
  end
 
  def update
-   @album= Album.find(params[:id])
-    if @album.update(album_params)
-      redirect_to albums_path
+   @user= User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to users_path
     else
       render :edit
     end
  end
 
  def destroy
-   @album = Album.find(params[:id])
-     @album.destroy
-     redirect_to albums_path
+   @user = User.find(params[:id])
+     @user.destroy
+     redirect_to users_path
  end
 
   private
